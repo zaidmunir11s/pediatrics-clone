@@ -21,7 +21,7 @@ function ReviewCard({ review }: { review: (typeof trustReviews.reviews)[number] 
   return (
     <article
       data-testid="review-card"
-      className="relative flex shrink-0 snap-start flex-col rounded-[12px] border border-black bg-white bg-[url(/images/trustindex/pattern-dottie.svg)] bg-[length:auto] bg-top-right bg-no-repeat p-5 shadow-[1px_4px_10px_0_rgba(0,0,0,0.16)] max-md:w-full md:w-[calc((100%-16px)/2)] lg:w-[calc((100%-48px)/4)]"
+      className="relative flex shrink-0 snap-start flex-col rounded-[12px] transition-transform duration-300 ease-out hover:-translate-y-[5px] border border-black bg-white bg-[url(/images/trustindex/pattern-dottie.svg)] bg-[length:auto] bg-top-right bg-no-repeat p-5 shadow-[1px_4px_10px_0_rgba(0,0,0,0.16)] max-md:w-full md:w-[calc((100%-16px)/2)] lg:w-[calc((100%-48px)/4)]"
     >
       <Image src={`${TI}/google-icon.svg`} alt="Google" width={20} height={20} className="absolute top-5 right-5" />
       <div className="flex items-center gap-[15px] pr-6">
@@ -131,7 +131,7 @@ export function TrustCarousel() {
           const max = el.scrollWidth - el.clientWidth;
           setProgress(max > 0 ? el.scrollLeft / max : 0);
         }}
-        className="mt-[30px] flex snap-x snap-mandatory gap-4 md:mt-5 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-[25px] flex snap-x snap-mandatory gap-4 pt-[5px] md:mt-[15px] overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {trustReviews.reviews.map((review) => (
           <ReviewCard key={review.name} review={review} />

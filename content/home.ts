@@ -44,6 +44,7 @@ export const nav = {
 };
 
 export const getStartedQuiz = {
+  icon: img("Home-popup-Icon.webp"),
   title: "Welcome to PBR!",
   intro: "Let’s find the right prep for you. What are you here to tackle?",
   options: [

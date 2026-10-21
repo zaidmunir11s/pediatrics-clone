@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useDialog } from "./useDialog";
 import { getStartedQuiz } from "@/content/home";
@@ -38,9 +39,18 @@ export function GetStartedModal() {
   if (!open) return null;
   const selected = choice === null ? null : getStartedQuiz.options[choice];
 
+  const ctaClass =
+    "mt-[30px] inline-flex h-[70px] items-center gap-7 rounded-[50px] bg-purple-cta pr-3 pl-[25px] text-base font-medium text-white transition-colors hover:bg-[#7f1aa6] max-md:w-full max-md:justify-between";
+  const chip = (
+    <span className="flex size-[46px] items-center justify-center rounded-full bg-white/15">
+      <Chevron />
+    </span>
+  );
+
+  // Layout measured from the reference's Kadence modal (800px box, 28px radius, 30px padding).
   return (
     <div
-      className="fixed inset-0 z-[100001] flex items-start justify-center overflow-y-auto bg-[rgba(16,11,71,0.75)] px-4 py-[28px]"
+      className="fixed inset-0 z-[100001] flex items-start justify-center overflow-y-auto bg-[rgba(16,11,71,0.8)] px-4 py-[28px]"
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -51,37 +61,26 @@ export function GetStartedModal() {
         aria-modal="true"
         aria-labelledby="get-started-title"
         tabIndex={-1}
-        className="relative w-full max-w-[800px] rounded-[28px] bg-white p-[30px] text-center outline-none max-md:p-5"
+        className="relative w-full max-w-[800px] rounded-[28px] bg-white p-[30px] pt-10 text-center outline-none max-md:p-5"
       >
-        <button
-          type="button"
-          aria-label="Close Modal"
-          onClick={close}
-          className="absolute top-5 right-5 size-6 text-ink-700"
-        >
+        <button type="button" aria-label="Close Modal" onClick={close} className="absolute top-[17px] right-5 size-[26px] text-[#444]">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-        <span className="mx-auto mb-3 flex size-[52px] items-center justify-center rounded-full bg-lavender-soft text-purple-cta">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-6">
-            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 16a1.25 1.25 0 1 1 0-2.5A1.25 1.25 0 0 1 12 18Zm1.6-5.4c-.6.4-.8.6-.8 1.2v.4h-1.8v-.5c0-1.2.5-1.8 1.4-2.4.6-.4 1-.7 1-1.3 0-.7-.6-1.2-1.4-1.2-.9 0-1.5.6-1.6 1.4L8.6 9.9C8.8 8 10.2 6.8 12 6.8c1.9 0 3.3 1.1 3.3 2.9 0 1.3-.7 2.1-1.7 2.9Z" />
-          </svg>
-        </span>
-        <h2 id="get-started-title" className="text-2xl leading-[1.5] font-bold text-ink-700">
+        <Image src={getStartedQuiz.icon} alt="" width={54} height={54} className="mx-auto size-[54px]" />
+        <h2 id="get-started-title" className="mt-[11px] text-2xl leading-9 font-bold text-ink-700">
           {getStartedQuiz.title}
         </h2>
-        <p className="mt-4 text-base text-ink-700">{getStartedQuiz.intro}</p>
+        <p className="mt-6 text-base leading-[26px] text-ink-500">{getStartedQuiz.intro}</p>
 
-        <fieldset className="mt-6 flex flex-col gap-3 text-left">
+        <fieldset className="mt-[30px] flex flex-col gap-[10px] text-left">
           <legend className="sr-only">{getStartedQuiz.intro}</legend>
           {getStartedQuiz.options.map((opt, i) => (
             <label
               key={opt.title}
-              className={`relative flex cursor-pointer items-center gap-4 rounded-[10px] border bg-white px-5 py-4 transition-colors ${
-                choice === i ? "border-purple-cta bg-lavender-soft" : "border-[#eeeaf3] hover:border-lavender"
-              }`}
+              className="relative flex min-h-[104px] cursor-pointer items-center gap-[15px] rounded-[16px] border-[3px] border-gray-bg bg-white py-[18px] pr-5 pl-[18px]"
             >
               <input
                 type="radio"
@@ -90,38 +89,40 @@ export function GetStartedModal() {
                 onChange={() => setChoice(i)}
                 className="peer absolute inset-0 size-full cursor-pointer opacity-0"
               />
+              {/* Reference radio: white disc with a lavender inset ring; fills green with a check when chosen. */}
               <span
                 aria-hidden="true"
-                className={`flex size-[22px] shrink-0 items-center justify-center rounded-full border-[3px] ${
-                  choice === i ? "border-purple-cta" : "border-lavender"
-                } peer-focus-visible:outline-2 peer-focus-visible:outline-purple-cta`}
+                className={`flex size-[30px] shrink-0 items-center justify-center rounded-full p-[10px] text-white transition-shadow peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-purple-cta ${
+                  choice === i ? "bg-[#11ac65] shadow-[inset_0_0_0_15px_#11ac65]" : "bg-white shadow-[inset_0_0_0_6px_rgba(233,211,245,0.8)]"
+                }`}
               >
-                {choice === i && <span className="size-2 rounded-full bg-purple-cta" />}
+                <svg viewBox="0 0 8 8" fill="currentColor" className="size-[10px]">
+                  <path d="M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z" transform="translate(0 1)" />
+                </svg>
               </span>
               <span>
-                <span className="block text-base font-semibold text-ink-700">{opt.title}</span>
-                <span className="mt-2 block text-sm leading-[1.6] text-ink-700">{opt.body}</span>
+                <span className="block text-[17px] leading-[26px] font-semibold text-ink-600">{opt.title}</span>
+                <span className="mt-[14px] block text-sm leading-[22px] text-ink-600">{opt.body}</span>
               </span>
             </label>
           ))}
         </fieldset>
 
         {selected ? (
-          <a
-            href={selected.href}
-            className="mt-6 inline-flex items-center gap-[0.7em] rounded-[50px] bg-purple-cta px-[25px] py-3 font-medium text-white transition-colors hover:bg-[#7f1aa6] max-md:w-full max-md:justify-center"
-          >
+          <a href={selected.href} className={ctaClass}>
             {getStartedQuiz.cta}
-            <Chevron />
+            {chip}
           </a>
         ) : (
+          // Same look as the reference before a choice; it prompts for a selection instead of navigating.
           <button
             type="button"
-            disabled
-            className="mt-6 inline-flex items-center gap-[0.7em] rounded-[50px] bg-purple-cta px-[25px] py-3 font-medium text-white opacity-50 max-md:w-full max-md:justify-center"
+            aria-disabled="true"
+            onClick={() => dialogRef.current?.querySelector<HTMLInputElement>("input[type=radio]")?.focus()}
+            className={ctaClass}
           >
             {getStartedQuiz.cta}
-            <Chevron />
+            {chip}
           </button>
         )}
       </div>

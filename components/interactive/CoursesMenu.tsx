@@ -43,7 +43,7 @@ export function CoursesMenu() {
       <a
         href="#"
         onClick={(e) => e.preventDefault()}
-        className="block py-[9.6px] pr-[33.6px] pl-2 text-base leading-[25.6px] text-black"
+        className={`block py-[9.6px] pr-[33.6px] pl-2 text-base leading-[25.6px] transition-colors duration-200 ${open ? "text-purple-cta" : "text-black"}`}
       >
         {nav.courses.label}
       </a>
@@ -53,13 +53,13 @@ export function CoursesMenu() {
         aria-label={`Expand ${nav.courses.label}`}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="absolute top-0 right-[7px] flex h-[45px] w-[26px] items-center justify-center text-black"
+        className={`absolute top-0 right-[7px] flex h-[45px] w-[26px] items-center justify-center transition-colors duration-200 ${open ? "text-purple-cta" : "text-black"}`}
       >
         <ChevronDown className="size-4" />
       </button>
       <ul
         data-testid="courses-dropdown"
-        className={`absolute top-[55px] left-0 z-50 w-[290px] rounded-[13px] bg-white p-5 shadow-[0_10px_30px_-2px_rgba(0,0,0,0.1)] transition-[opacity,transform] duration-200 before:absolute before:inset-x-0 before:-top-[10px] before:h-[10px] ${
+        className={`absolute top-[48px] left-0 z-50 w-[290px] rounded-[13px] bg-white p-5 shadow-[0_10px_30px_-2px_rgba(0,0,0,0.1)] transition-[opacity,transform] duration-200 before:absolute before:inset-x-0 before:-top-[10px] before:h-[10px] ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         }`}
       >

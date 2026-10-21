@@ -52,3 +52,16 @@ test.describe("mobile", () => {
     expect(first.width).toBeGreaterThan(box.width * 0.85);
   });
 });
+
+test("review card lifts 5px on hover like the reference", async ({ page }) => {
+  await page.goto("/");
+  const card = page.getByTestId("review-card").first();
+  await card.scrollIntoViewIfNeeded();
+  await page.mouse.move(5, 5);
+  await expect(card).toHaveCSS("transition-duration", /0\.3s/);
+  const before = (await card.boundingBox())!.y;
+  await card.hover();
+  await expect.poll(async () => Math.round(before - (await card.boundingBox())!.y)).toBe(5);
+  await page.mouse.move(5, 5);
+  await expect.poll(async () => Math.abs((await card.boundingBox())!.y - before)).toBeLessThan(0.5);
+});

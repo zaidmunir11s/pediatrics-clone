@@ -31,13 +31,17 @@ test.describe("tablet 768", () => {
     const box = (await page.getByTestId("founder").getByRole("heading", { level: 2 }).boundingBox())!;
     expect(box.width).toBeGreaterThanOrEqual(300);
   });
-  test("ribbon stays compact and scroll-to-top sits above it", async ({ page }) => {
+  test("ribbon stays compact and is never covered by scroll-to-top", async ({ page }) => {
     await page.goto("/");
-    const ribbon = (await page.getByTestId("funnel-ribbon").boundingBox())!;
-    expect(ribbon.height).toBeLessThanOrEqual(280);
+    const ribbon = page.getByTestId("funnel-ribbon");
+    expect((await ribbon.boundingBox())!.height).toBeLessThanOrEqual(280);
     await page.evaluate(() => window.scrollTo(0, 2000));
-    const top = (await page.getByRole("button", { name: "Scroll to top" }).boundingBox())!;
-    expect(top.y + top.height).toBeLessThanOrEqual(ribbon.y);
+    // As on the reference, scroll-to-top stacks below the ribbon rather than on top of it.
+    const [r, s] = await Promise.all([
+      ribbon.evaluate((e) => Number(getComputedStyle(e).zIndex)),
+      page.getByRole("button", { name: "Scroll to top", includeHidden: true }).evaluate((e) => Number(getComputedStyle(e).zIndex)),
+    ]);
+    expect(s).toBeLessThan(r);
   });
 });
 

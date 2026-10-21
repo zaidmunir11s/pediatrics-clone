@@ -1,14 +1,16 @@
 import { Fragment } from "react";
 import { trustedStrip } from "@/content/home";
 
+// The reference draws each separator as an oversized "." glyph; a real 8px dot,
+// centred on the text, reproduces how it renders without the glyph's baseline drift.
+function Dot() {
+  return <span aria-hidden="true" className="mx-[14px] inline-block size-2 shrink-0 rounded-full bg-[#d7d6d6] align-middle md:mr-[25px] md:ml-[30px] md:translate-y-[3px]" />;
+}
+
 function Institutions() {
   return trustedStrip.institutions.map((name, i) => (
     <Fragment key={name}>
-      {i > 0 && (
-        <span aria-hidden="true" className="inline-block px-[24px] text-[40px] leading-[48px] text-[#d7d6d6]">
-          .
-        </span>
-      )}
+      {i > 0 && <Dot />}
       <span className="whitespace-nowrap">{name}</span>
     </Fragment>
   ));
@@ -24,18 +26,18 @@ export function TrustedStrip() {
       {/* Desktop: two centred lines */}
       <p
         data-testid="institutions"
-        className="-mt-[5px] text-center text-[20px] leading-[26px] font-bold text-teal-text max-md:hidden"
+        className="text-center text-[20px] leading-[48px] font-bold text-teal-text max-md:hidden"
       >
         <Institutions />
       </p>
 
       {/* Mobile: the reference runs the list as a continuous ticker */}
-      <div className="mt-[5px] overflow-hidden md:hidden" aria-label={trustedStrip.institutions.join(", ")} role="img">
+      <div className="mt-[5px] flex h-14 items-center overflow-hidden md:hidden" aria-label={trustedStrip.institutions.join(", ")} role="img">
         <div className="flex w-max animate-[marquee_25s_linear_infinite] items-center text-[16px] leading-[26px] font-bold text-teal-text motion-reduce:animate-none">
           {[0, 1].map((copy) => (
-            <span key={copy} aria-hidden="true" className="flex items-center pr-[24px]">
+            <span key={copy} aria-hidden="true" className="flex items-center">
               <Institutions />
-              <span className="inline-block pl-[24px] text-[40px] leading-[48px] text-[#d7d6d6]">.</span>
+              <Dot />
             </span>
           ))}
         </div>

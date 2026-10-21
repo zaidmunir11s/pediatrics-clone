@@ -43,6 +43,7 @@ const uploads = [
   "pbr.webp",
   "Footer-bg.png",
   "pbr-dermatology-gastroenterology-study-guides.webp",
+  "Home-popup-Icon.webp",
   "Pediatrics-Board-Review-Logo-White-1-scaled-e1764928355422.webp",
   "face.png",
   "twt.png",

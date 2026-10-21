@@ -47,10 +47,11 @@ test("download form validates and never pretends to submit", async ({ page }) =>
 
 test("scroll-to-top appears after scrolling and returns to top", async ({ page }) => {
   await page.goto("/");
-  const btn = page.getByRole("button", { name: "Scroll to top" });
-  await expect(btn).toBeHidden();
+  await page.getByTestId("funnel-ribbon").getByRole("button", { name: "Close" }).click();
+  const btn = page.getByRole("button", { name: "Scroll to top", includeHidden: true });
+  await expect(btn).toHaveCSS("opacity", "0");
   await page.evaluate(() => window.scrollTo(0, 1500));
-  await expect(btn).toBeVisible();
+  await expect(btn).toHaveCSS("opacity", "1");
   await btn.click();
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 });
