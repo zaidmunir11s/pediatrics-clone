@@ -7,11 +7,11 @@ export function Preorder() {
       id="preorder-2027"
       className="scroll-mt-[90px] bg-[linear-gradient(#f3eeff_0px,#fff_100%)] px-5 pt-[46px] pb-[58px] text-center"
     >
-      <span className="relative inline-block pb-[14px] text-[22px] leading-[35.2px] font-extrabold tracking-[1px] text-purple-deep uppercase after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-[187px] after:-translate-x-1/2 after:rounded-full after:bg-amber max-md:text-[18px]">
+      <span className="relative inline-block pb-[14px] text-[22px] leading-[35.2px] font-extrabold tracking-[1px] text-purple-deep uppercase after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-[187px] after:-translate-x-1/2 after:rounded-full after:bg-amber ">
         {preorder.kicker}
       </span>
 
-      <h2 className="mt-[60px] text-[30px] leading-[1.2] font-extrabold text-ink-900 max-md:mt-10 md:text-[40px] md:leading-[45.6px]">
+      <h2 className="mt-[60px] text-[30px] leading-[1.2] font-extrabold text-ink-900 max-md:mt-[45px] max-md:leading-[34.2px] md:text-[40px] md:leading-[45.6px]">
         {preorder.title}
         <span className="text-purple-cta">{preorder.titleAccent}</span>
       </h2>

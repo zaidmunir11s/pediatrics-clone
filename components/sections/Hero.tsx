@@ -9,9 +9,9 @@ function Stat({ stat }: { stat: (typeof hero.stats)[number] }) {
     <div className="flex items-start gap-[15px]">
       <CheckIcon className="size-[31px] rounded-[12px] bg-[#f9eeff] p-[10px]" />
       <div className="text-ink-700 md:w-[172px]">
-        <p className="text-base leading-[24px] text-black md:text-sm md:leading-[17px]">{stat.label}</p>
+        <p className="text-[15px] leading-[22px] whitespace-pre-line text-black md:text-sm md:leading-[17px]">{stat.label}</p>
         {"value" in stat && stat.value ? (
-          <strong className="mt-[6px] block text-base leading-[24px] font-bold text-ink-600 md:max-w-[83px] md:text-lg">
+          <strong className="mt-[6px] block text-base leading-[21px] font-bold text-ink-600 md:max-w-[83px] md:text-lg md:leading-[24px]">
             {stat.value}
           </strong>
         ) : null}
@@ -38,37 +38,37 @@ export function Hero() {
   return (
     <section
       data-testid="hero"
-      className="mx-auto flex max-w-[1310px] flex-col px-[10px] pt-[34px] pb-[20px] md:grid md:grid-cols-[689fr_562fr] md:gap-x-5 md:px-[20px] md:pt-[60px] lg:h-[792px]"
+      className="mx-auto flex max-w-[1310px] flex-col px-[10px] pt-[30px] pb-[30px] md:grid md:grid-cols-[689fr_562fr] md:gap-x-5 md:px-[20px] md:pt-[60px] lg:h-[792px]"
     >
       {/* Left column; on mobile its children join the parent flow so they can reorder. */}
       <div className="contents md:flex md:flex-col">
         <h1 className="order-1 md:order-none text-[27px] leading-[39px] font-medium text-black md:text-[40px] md:leading-[52px] lg:text-[52px] lg:leading-[64px]">
           {hero.titleLines[0]}{" "}
-          <br />
+          <br className="max-md:hidden" />
           {hero.titleLines[1]}
         </h1>
         <p
           data-testid="hero-copy"
-          className="order-4 md:order-none mt-[27px] text-[17px] leading-[26px] text-ink-500 md:mt-[26px] md:text-base md:leading-[25.6px]"
+          className="order-4 md:order-none mt-[25px] text-base leading-[25.6px] text-ink-500 md:mt-[26px]"
         >
           {hero.copy}
         </p>
         <div
           data-testid="hero-stats"
-          className="order-5 md:order-none mt-[34px] flex flex-col gap-[18px] md:mt-[32px] md:grid md:h-[72px] md:grid-cols-3 md:gap-[18px]"
+          className="order-5 md:order-none mt-[32px] flex flex-col gap-4 md:mt-[32px] md:grid md:h-[72px] md:grid-cols-3 md:gap-[18px]"
         >
           {hero.stats.map((stat) => (
             <Stat key={stat.label} stat={stat} />
           ))}
         </div>
-        <div className="order-2 mt-[23px] md:order-none md:mt-[30px]">
+        <div className="order-2 mt-[19px] md:order-none md:mt-[30px]">
           <Button href={hero.cta.href} chevron className="h-[50px] max-md:px-[25px]">
             {hero.cta.label}
           </Button>
         </div>
         <div
           data-testid="guarantee"
-          className="order-3 mt-4 flex items-center gap-[17px] rounded-[18px] bg-cream-feature p-[10px] md:order-none md:mt-[32px] md:h-[102px] md:w-[409px]"
+          className="order-3 mt-[14px] flex h-[110px] items-center gap-[17px] rounded-[18px] bg-cream-feature p-[10px] md:order-none md:mt-[32px] md:h-[102px] md:w-[409px]"
         >
           <Image
             src={hero.guarantee.badge.src}
@@ -77,7 +77,7 @@ export function Hero() {
             height={88}
             className="size-[96px] md:h-[88px] md:w-[89px]"
           />
-          <p className="text-base leading-[24px] font-bold text-ink-700 md:text-lg md:leading-[28.8px]">
+          <p className="text-[15px] leading-[24px] font-bold text-ink-700 md:text-lg md:leading-[28.8px]">
             {hero.guarantee.line1}
             <br />
             {hero.guarantee.line2Lead}
@@ -86,7 +86,7 @@ export function Hero() {
         </div>
       </div>
 
-      <picture data-testid="hero-image" className="order-6 mt-[40px] block md:mt-0">
+      <picture data-testid="hero-image" className="order-6 mt-[38px] block md:mt-0">
         <source media="(max-width: 767px)" srcSet={hero.image.mobile} />
         <Image
           src={hero.image.desktop}

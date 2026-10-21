@@ -81,7 +81,7 @@ export const hero = {
   copy: "Thousands of pediatricians (even those who’ve failed multiple times) have passed their board exams with our proven Pediatrics Board Review® system. Whether it’s your first time or your tenth, our resources and strategies help you pass with confidence. Join them and take the next step toward exam success!",
   stats: [
     { label: "Board certification in a", value: "SINGLE ATTEMPT" },
-    { label: "Tried and tested courses used by", count: 10000, suffix: "+", caption: "Pediatricians" },
+    { label: "Tried and tested\ncourses used by", count: 10000, suffix: "+", caption: "Pediatricians" },
     { label: "First-time pass rates estimated at", count: 99, suffix: "%" },
   ],
   cta: { label: "Get Started", href: "#who-do-we-help" },

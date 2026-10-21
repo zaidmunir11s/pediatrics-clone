@@ -97,7 +97,7 @@ export function TrustCarousel() {
   return (
     <div
       data-testid="trust-reviews"
-      className="relative mx-auto max-w-[1440px] px-[24px] pt-2 pb-[40px] md:px-10 md:pb-[96px]"
+      className="relative mx-auto max-w-[1440px] px-[24px] pt-5 pb-[90px] md:px-10 md:pt-2 md:pb-[96px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -105,7 +105,7 @@ export function TrustCarousel() {
     >
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] border border-white bg-gray-bg px-5 py-[21px] max-md:flex-col max-md:items-start max-md:gap-2 max-md:border-[#f0f0f0]">
         <div className="flex flex-wrap items-center gap-x-[10px] gap-y-1 text-[15px] leading-[21px] font-semibold text-black">
-          <Image src={`${TI}/google-logo.svg`} alt="Google" width={79} height={25} />
+          <Image src={`${TI}/google-logo.svg`} alt="Google" width={79} height={25} className="max-md:basis-full max-md:pr-[calc(100%-79px)]" />
           <span>{trustReviews.rating}</span>
           <Stars size={18} />
           <span className="max-md:w-full">{trustReviews.label}</span>
@@ -127,7 +127,7 @@ export function TrustCarousel() {
           const max = el.scrollWidth - el.clientWidth;
           setProgress(max > 0 ? el.scrollLeft / max : 0);
         }}
-        className="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="mt-[30px] flex snap-x snap-mandatory gap-4 md:mt-5 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {trustReviews.reviews.map((review) => (
           <ReviewCard key={review.name} review={review} />

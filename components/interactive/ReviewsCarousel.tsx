@@ -6,7 +6,7 @@ import { reviews } from "@/content/home";
 
 function Star() {
   return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-[19px]">
+    <svg viewBox="2 2.2 20 19" fill="currentColor" aria-hidden="true" className="size-[19px]">
       <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
     </svg>
   );
@@ -18,7 +18,7 @@ function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) 
       type="button"
       aria-label={dir === "prev" ? "Previous slide" : "Next slide"}
       onClick={onClick}
-      className={`absolute top-[379px] z-10 flex h-12 w-8 items-center justify-center rounded-[3px] border-2 border-transparent bg-black/80 text-white transition-colors hover:bg-black max-md:top-[280px] ${
+      className={`absolute top-[379px] z-10 flex h-12 w-8 items-center justify-center rounded-[3px] border-2 border-transparent bg-black/80 text-white opacity-0 transition-opacity group-hover:opacity-75 hover:opacity-100 focus-visible:opacity-100 max-md:top-[308px] ${
         dir === "prev" ? "left-0" : "right-0"
       }`}
     >
@@ -36,7 +36,7 @@ export function ReviewsCarousel() {
   const go = (delta: number) => setIndex((i) => (i + delta + count) % count);
 
   return (
-    <div className="relative mt-[42px]">
+    <div className="group relative mt-[31px] md:mt-[42px]">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out motion-reduce:transition-none"
@@ -47,7 +47,7 @@ export function ReviewsCarousel() {
               key={slide.name}
               aria-hidden={i !== index}
               inert={i !== index}
-              className="flex w-full shrink-0 justify-center px-10"
+              className="flex w-full shrink-0 justify-center px-[71px] md:px-10"
             >
               <figure className="w-full max-w-[460px] text-center">
                 <Image
@@ -58,18 +58,18 @@ export function ReviewsCarousel() {
                   sizes="(max-width: 767px) 80vw, 460px"
                   className="aspect-[4/3] w-full rounded-[20px] object-cover"
                 />
-                <h3 className="mt-[15px] text-[28px] leading-[42px] font-bold text-navy md:text-[48px] md:leading-[72px]">
+                <h3 className="mt-[15px] text-[22px] leading-[33px] font-bold text-navy md:text-[48px] md:leading-[72px]">
                   {slide.title}
                 </h3>
-                <div className="mt-6 flex justify-center text-purple-cta" aria-label="5 out of 5 stars" role="img">
+                <div className="mt-3 flex justify-center text-purple-cta md:mt-6" aria-label="5 out of 5 stars" role="img">
                   {Array.from({ length: 5 }, (_, s) => (
                     <Star key={s} />
                   ))}
                 </div>
-                <blockquote className="mt-[10px] text-base leading-[25.6px] text-black">{slide.quote}</blockquote>
+                <blockquote className="mt-[10px] text-[15px] leading-[24px] text-black md:text-base md:leading-[25.6px]">{slide.quote}</blockquote>
                 <figcaption className="mt-[10px]">
-                  <div className="text-lg leading-[28.8px] font-bold text-black">{slide.name}</div>
-                  <div className="text-[17px] leading-[27.2px] font-bold text-black">{reviews.occupation}</div>
+                  <div className="text-base leading-[25.6px] font-bold text-black md:text-lg md:leading-[28.8px]">{slide.name}</div>
+                  <div className="text-base leading-[25.6px] font-bold text-black md:text-[17px] md:leading-[27.2px]">{reviews.occupation}</div>
                 </figcaption>
               </figure>
             </div>
