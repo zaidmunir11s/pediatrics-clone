@@ -10,7 +10,7 @@ function Featured() {
       className="relative mt-5 grid rounded-[30px] bg-cream-feature lg:mt-[30px] lg:h-[562px] lg:grid-cols-[635px_1fr] lg:gap-10 lg:rounded-[60px]"
     >
       <div className="relative pt-4 lg:pt-[90px]">
-        <VideoEmbed thumb={f.video.thumb} embed={f.video.embed} className="rounded-[16px]" />
+        <VideoEmbed thumb={f.video.thumb} embed={f.video.embed} className="rounded-[14px] md:rounded-[16px]" />
         <span className="absolute top-[197px] left-[50px] rounded-[8px] bg-cyan-tag px-[10px] py-[5px] text-[12px] leading-[19.2px] font-semibold text-black uppercase lg:top-[492px] lg:px-3 lg:py-2 lg:text-[15px] lg:leading-[24px]">
           {f.tag}
         </span>
