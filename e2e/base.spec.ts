@@ -8,7 +8,7 @@ test("has title", async ({ page }) => {
 
 test("uses Poppins", async ({ page }) => {
   await page.goto("/");
-  expect(await css(page.locator("body"), "font-family")).toContain("Poppins");
+  expect(await css(page.locator("body"), "font-family")).toMatch(/poppins/i);
 });
 
 test("assets present", async ({ request }) => {

@@ -47,7 +47,7 @@ export function ReviewsCarousel() {
               key={slide.name}
               aria-hidden={i !== index}
               inert={i !== index}
-              className="flex w-full shrink-0 justify-center px-[71px] md:px-10"
+              className="flex w-full shrink-0 justify-center px-[55px] md:px-10"
             >
               <figure className="w-full max-w-[460px] text-center">
                 <Image

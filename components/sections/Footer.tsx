@@ -38,7 +38,7 @@ export function Footer() {
               <ul className="mt-[22px] flex flex-col gap-2 leading-[22px] md:mt-[30px] md:gap-[17px]">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-[13px] leading-[22px] font-normal text-white transition-colors hover:text-lavender md:text-[15px]">
+                    <a href={link.href} className="text-[13px] leading-[22px] font-normal text-white transition-colors duration-100 hover:text-purple-cta hover:underline hover:underline-offset-[0.25em] md:text-[15px]">
                       {link.label}
                     </a>
                   </li>
@@ -53,7 +53,7 @@ export function Footer() {
           <div className="flex flex-col items-center gap-[14px] md:items-end">
             <div className="flex gap-[10px]">
               {footer.socials.map((s) => (
-                <a key={s.label} href={s.href} aria-label={s.label} className="transition-opacity hover:opacity-80">
+                <a key={s.label} href={s.href} aria-label={s.label} className="block">
                   <Image src={s.icon} alt="" width={48} height={48} />
                 </a>
               ))}
@@ -63,7 +63,7 @@ export function Footer() {
               {footer.legal.map((l, i) => (
                 <span key={l.label}>
                   {i > 0 && " | "}
-                  <a href={l.href} className="hover:text-white/70">
+                  <a href={l.href}>
                     {l.label}
                   </a>
                 </span>

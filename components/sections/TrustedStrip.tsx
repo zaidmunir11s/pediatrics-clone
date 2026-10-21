@@ -5,7 +5,7 @@ function Institutions() {
   return trustedStrip.institutions.map((name, i) => (
     <Fragment key={name}>
       {i > 0 && (
-        <span aria-hidden="true" className="inline-block -translate-y-[9px] px-[19px] text-[40px] leading-[48px] text-[#d7d6d6]">
+        <span aria-hidden="true" className="inline-block px-[24px] text-[40px] leading-[48px] text-[#d7d6d6]">
           .
         </span>
       )}
@@ -33,9 +33,9 @@ export function TrustedStrip() {
       <div className="mt-[5px] overflow-hidden md:hidden" aria-label={trustedStrip.institutions.join(", ")} role="img">
         <div className="flex w-max animate-[marquee_25s_linear_infinite] items-center text-[16px] leading-[26px] font-bold text-teal-text motion-reduce:animate-none">
           {[0, 1].map((copy) => (
-            <span key={copy} aria-hidden="true" className="flex items-center pr-[19px]">
+            <span key={copy} aria-hidden="true" className="flex items-center pr-[24px]">
               <Institutions />
-              <span className="inline-block -translate-y-[9px] pl-[19px] text-[40px] leading-[48px] text-[#d7d6d6]">.</span>
+              <span className="inline-block pl-[24px] text-[40px] leading-[48px] text-[#d7d6d6]">.</span>
             </span>
           ))}
         </div>

@@ -12,7 +12,7 @@ export function AnnouncementBar() {
       </span>{" "}
       <a
         href={announcement.cta.href}
-        className="inline-block rounded-full bg-amber px-[14px] py-[6px] text-[17px] leading-[27.2px] font-extrabold whitespace-nowrap text-ink-900 transition-colors hover:bg-[#fbbf24] md:px-5 md:py-[7px]"
+        className="inline-block rounded-full bg-amber px-[14px] py-[6px] text-[17px] leading-[27.2px] font-extrabold whitespace-nowrap text-ink-900 md:px-5 md:py-[7px]"
       >
         {announcement.cta.label}
       </a>

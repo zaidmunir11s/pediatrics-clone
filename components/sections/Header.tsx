@@ -30,7 +30,7 @@ export function Header() {
           </nav>
           <a
             href={nav.login.href}
-            className="ml-[23px] flex h-[54px] items-center rounded-[50px] bg-lavender px-[25px] text-base font-medium text-black uppercase transition-colors hover:bg-[#dcbcef]"
+            className="ml-[23px] flex h-[54px] items-center rounded-[50px] bg-lavender px-[25px] text-base font-medium text-black uppercase transition-colors duration-300 hover:bg-purple-cta hover:text-white"
           >
             {nav.login.label}
           </a>

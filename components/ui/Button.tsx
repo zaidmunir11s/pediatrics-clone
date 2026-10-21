@@ -14,11 +14,11 @@ const variants: Record<ButtonVariant, string> = {
   header:
     "bg-purple-cta text-white hover:bg-[#7f1aa6] rounded-[50px] px-[25px] py-[14px] text-base font-medium uppercase",
   lavender:
-    "bg-lavender text-black hover:bg-[#dcbcef] rounded-[50px] px-[25px] py-[14px] text-base font-medium uppercase",
+    "bg-lavender text-black hover:bg-purple-cta hover:text-white rounded-[50px] px-[25px] py-[14px] text-base font-medium uppercase",
   preorder:
-    "bg-purple-deep text-white hover:bg-violet-dark rounded-full px-9 py-[14px] text-lg font-extrabold",
+    "bg-purple-deep text-white transition-[transform,box-shadow,background-color] duration-150 hover:-translate-y-[3px] hover:scale-[1.03] hover:bg-[#ec008c] hover:shadow-[0_10px_24px_rgba(236,0,140,0.45)] rounded-full px-9 py-[14px] text-lg font-extrabold",
   amber:
-    "bg-amber text-ink-900 hover:bg-[#fbbf24] rounded-full px-5 py-[7px] text-[17px] font-extrabold",
+    "bg-amber text-ink-900 rounded-full px-5 py-[7px] text-[17px] font-extrabold",
 };
 
 type Props = ComponentPropsWithoutRef<"a"> & {

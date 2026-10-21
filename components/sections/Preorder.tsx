@@ -42,7 +42,7 @@ export function Preorder() {
             />
             <a
               href={card.href}
-              className="mt-[22px] inline-flex h-[57px] items-center rounded-full bg-purple-deep px-9 text-lg leading-[28.8px] font-extrabold text-white transition-colors hover:bg-violet-dark"
+              className="mt-[22px] inline-flex h-[57px] items-center rounded-full bg-purple-deep px-9 text-lg leading-[28.8px] font-extrabold text-white transition-[transform,box-shadow,background-color] duration-150 hover:-translate-y-[3px] hover:scale-[1.03] hover:bg-[#ec008c] hover:shadow-[0_10px_24px_rgba(236,0,140,0.45)]"
             >
               {preorder.cta}
             </a>

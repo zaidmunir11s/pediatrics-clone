@@ -10,7 +10,7 @@ function Stars({ size }: { size: number }) {
   return (
     <span className="flex gap-px">
       {Array.from({ length: 5 }, (_, i) => (
-        <Image key={i} src={`${TI}/star.svg`} alt="" width={size} height={size} />
+        <Image key={i} src={`${TI}/star.svg`} alt="" width={size} height={size} style={{ width: size, height: size }} />
       ))}
     </span>
   );

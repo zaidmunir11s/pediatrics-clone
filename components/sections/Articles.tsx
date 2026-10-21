@@ -42,7 +42,7 @@ function Featured() {
 
 export function Articles() {
   return (
-    <section className="mx-auto max-w-[1310px] px-[10px] pt-10 pb-[60px] md:px-5 md:pt-20 md:pb-[100px]">
+    <section className="mx-auto max-w-[1310px] px-[10px] pt-10 pb-[100px] md:px-5 md:pt-20">
       <h2 className="text-[24px] leading-[34px] font-medium text-black md:text-[44px] md:leading-[55px]">
         {articles.titleLead}
         <strong className="font-bold text-purple-cta">{articles.titleAccent}</strong>
