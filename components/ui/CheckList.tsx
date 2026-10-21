@@ -28,14 +28,14 @@ export function CheckList({
   ...rest
 }: Props) {
   return (
-    <ul className={`flex flex-col gap-[14px] ${className}`} {...rest}>
+    <ul className={`flex flex-col ${className}`} {...rest}>
       {items.map((item) => (
         <li
           key={item}
-          className="flex items-start gap-[10px] text-base leading-[1.6] text-ink-700"
+          className="flex items-center gap-[13px] text-ink-700"
         >
           <CheckIcon className={iconClassName} />
-          <span className="pt-0.5">{item}</span>
+          <span>{item}</span>
         </li>
       ))}
     </ul>

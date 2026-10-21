@@ -5,6 +5,9 @@ import { Preorder } from "@/components/sections/Preorder";
 import { TrustedStrip } from "@/components/sections/TrustedStrip";
 import { StartHere } from "@/components/sections/StartHere";
 import { Strategy } from "@/components/sections/Strategy";
+import { TrustReviews } from "@/components/sections/TrustReviews";
+import { AsSeenOn } from "@/components/sections/AsSeenOn";
+import { WhoHelp } from "@/components/sections/WhoHelp";
 import { GetStartedModal } from "@/components/interactive/GetStartedModal";
 
 export default function Home() {
@@ -19,6 +22,9 @@ export default function Home() {
         <TrustedStrip />
         <StartHere />
         <Strategy />
+        <TrustReviews />
+        <AsSeenOn />
+        <WhoHelp />
       </main>
       <GetStartedModal />
     </div>
