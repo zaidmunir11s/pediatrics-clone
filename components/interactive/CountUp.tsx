@@ -35,7 +35,8 @@ export function CountUp({ to, suffix = "", duration = 2500, className }: Props) 
   }, [to, duration]);
 
   return (
-    <span ref={ref} className={className} aria-label={`${format(to)}${suffix}`}>
+    <span ref={ref} className={className}>
+      <span className="sr-only">{`${format(to)}${suffix}`}</span>
       <span aria-hidden="true">
         {format(value)}
         {suffix}

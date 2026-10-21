@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useDialog } from "./useDialog";
 import { getStartedQuiz } from "@/content/home";
 import { Chevron } from "@/components/ui/Button";
 
@@ -24,20 +25,15 @@ export function GetStartedModal() {
     return () => document.removeEventListener("click", onClick);
   }, []);
 
-  useEffect(() => {
-    if (!open) return;
-    dialogRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [open]);
+  useDialog(dialogRef, open, () => setOpen(false), () => {
+    const el = opener.current;
+    if (el?.isConnected) return el;
+    // Trigger was unmounted (e.g. inside the mobile menu): use its declared fallback.
+    const fallback = el?.dataset.returnFocus;
+    return fallback ? document.querySelector<HTMLElement>(fallback) : null;
+  });
 
-  function close() {
-    setOpen(false);
-    opener.current?.focus();
-  }
+  const close = () => setOpen(false);
 
   if (!open) return null;
   const selected = choice === null ? null : getStartedQuiz.options[choice];

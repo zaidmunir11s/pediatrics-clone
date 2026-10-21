@@ -76,6 +76,8 @@ function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) 
 export function TrustCarousel() {
   const track = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  // Any direct interaction (touch, drag, wheel) stops autoplay for good, as hover cannot on touch screens.
+  const [stopped, setStopped] = useState(false);
   const [progress, setProgress] = useState(0);
 
   function step(dir: 1 | -1) {
@@ -89,10 +91,10 @@ export function TrustCarousel() {
   }
 
   useEffect(() => {
-    if (paused || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (paused || stopped || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => step(1), 6000);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, stopped]);
 
   return (
     <div
@@ -102,6 +104,8 @@ export function TrustCarousel() {
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
+      onPointerDown={() => setStopped(true)}
+      onWheel={() => setStopped(true)}
     >
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] border border-white bg-gray-bg px-5 py-[21px] max-md:flex-col max-md:items-start max-md:gap-2 max-md:border-[#f0f0f0]">
         <div className="flex flex-wrap items-center gap-x-[10px] gap-y-1 text-[15px] leading-[21px] font-semibold text-black">

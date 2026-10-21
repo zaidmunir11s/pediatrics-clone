@@ -29,7 +29,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto max-w-[1282px] px-6 md:px-5">
-        <div data-testid="footer-links" className="grid grid-cols-2 gap-x-[14px] gap-y-11 pt-[42px] md:h-[398px] md:grid-cols-5 md:gap-x-[82px] md:pt-[52px]">
+        <div data-testid="footer-links" className="grid grid-cols-2 gap-x-[14px] gap-y-11 pt-[42px] md:grid-cols-3 md:pt-[52px] lg:h-[398px] lg:grid-cols-5 lg:gap-x-[82px]">
           {footer.columns.map((col) => (
             <div key={col.title}>
               <strong data-testid="footer-heading" className="block text-[20px] leading-[28px] font-bold text-lavender">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent } from "react";
 import { funnel } from "@/content/home";
+import { useDialog } from "./useDialog";
 
 const DISMISS_KEY = "pbr-funnel-dismissed";
 
@@ -32,17 +33,12 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Errors = Partial<Record<"first" | "last" | "email", string>>;
 
-function DownloadModal({ onClose }: { onClose: () => void }) {
+function DownloadModal({ onClose, returnTo }: { onClose: () => void; returnTo: () => HTMLElement | null }) {
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    dialogRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  useDialog(dialogRef, true, onClose, returnTo);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -102,11 +98,11 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
               <div className="mt-2 grid grid-cols-2 gap-3">
                 {(["first", "last"] as const).map((key) => (
                   <div key={key}>
-                    <input id={`dl-${key}`} name={key} type="text" autoComplete={key === "first" ? "given-name" : "family-name"} aria-invalid={!!errors[key]} className={field} />
+                    <input id={`dl-${key}`} name={key} type="text" autoComplete={key === "first" ? "given-name" : "family-name"} aria-invalid={!!errors[key]} aria-describedby={errors[key] ? `dl-${key}-error` : undefined} className={field} />
                     <label htmlFor={`dl-${key}`} className="mt-1 block text-[13px] capitalize">
                       {key}
                     </label>
-                    {errors[key] && <p className="mt-1 text-[13px] text-[#c02b0a]">{errors[key]}</p>}
+                    {errors[key] && <p id={`dl-${key}-error`} className="mt-1 text-[13px] text-[#c02b0a]">{errors[key]}</p>}
                   </div>
                 ))}
               </div>
@@ -115,8 +111,8 @@ function DownloadModal({ onClose }: { onClose: () => void }) {
               <label htmlFor="dl-email" className="text-[15px] font-semibold">
                 Email <span className="text-[#c02b0a]">*</span>
               </label>
-              <input id="dl-email" name="email" type="email" autoComplete="email" aria-invalid={!!errors.email} className={`${field} mt-2`} />
-              {errors.email && <p className="mt-1 text-[13px] text-[#c02b0a]">{errors.email}</p>}
+              <input id="dl-email" name="email" type="email" autoComplete="email" aria-invalid={!!errors.email} aria-describedby={errors.email ? "dl-email-error" : undefined} className={`${field} mt-2`} />
+              {errors.email && <p id="dl-email-error" className="mt-1 text-[13px] text-[#c02b0a]">{errors.email}</p>}
             </div>
             <button type="submit" className="self-start rounded-[4px] bg-[#7f1aa6] px-4 py-2 text-[15px] font-medium text-white hover:bg-purple-cta">
               Submit
@@ -137,21 +133,27 @@ export function FunnelRibbon() {
   const visible = !useSyncExternalStore(dismissedStore.subscribe, dismissedStore.get, () => true);
   const [modal, setModal] = useState(false);
   const ribbonRef = useRef<HTMLDivElement>(null);
+  const downloadRef = useRef<HTMLButtonElement>(null);
 
   // Reserve space under the page so the ribbon never hides the footer's last line.
   useEffect(() => {
     const el = ribbonRef.current;
     if (!visible || !el) {
       document.body.style.paddingBottom = "";
+      document.documentElement.style.removeProperty("--ribbon-h");
       return;
     }
-    const sync = () => (document.body.style.paddingBottom = `${el.offsetHeight}px`);
+    const sync = () => {
+      document.body.style.paddingBottom = `${el.offsetHeight}px`;
+      document.documentElement.style.setProperty("--ribbon-h", `${el.offsetHeight}px`);
+    };
     sync();
     const ro = new ResizeObserver(sync);
     ro.observe(el);
     return () => {
       ro.disconnect();
       document.body.style.paddingBottom = "";
+      document.documentElement.style.removeProperty("--ribbon-h");
     };
   }, [visible]);
 
@@ -163,34 +165,35 @@ export function FunnelRibbon() {
           data-testid="funnel-ribbon"
           className="fixed inset-x-0 bottom-0 z-[9999] rounded-t-[20px] bg-navy-ribbon"
         >
-          <div className="mx-auto flex max-w-[1290px] items-center gap-4 px-[10px] py-5 max-md:flex-wrap md:gap-10 md:px-5">
-            <div className="flex shrink-0 gap-[15px] max-md:gap-[10px]">
+          <div className="mx-auto flex max-w-[1290px] items-center gap-4 px-[10px] py-5 max-lg:flex-wrap lg:gap-10 lg:px-5">
+            <div className="flex shrink-0 gap-[15px] max-lg:gap-[10px]">
               {funnel.chapters.map((ch) => (
-                <div key={ch.topic} className="flex h-[157px] w-[135px] flex-col items-center rounded-[15px] bg-white p-[10px] text-center max-md:h-[123px] max-md:w-[84px] max-md:p-[6px]">
-                  <Image src={ch.image} alt="" width={115} height={76} className="h-[76px] w-[115px] rounded-[15px] object-cover max-md:h-[48px] max-md:w-[72px] max-md:rounded-[10px]" />
-                  <p className="mt-[6px] text-[10px] leading-[16px] font-bold text-ink-700 max-md:text-[7px] max-md:leading-[10px]">
+                <div key={ch.topic} className="flex h-[157px] w-[135px] flex-col items-center rounded-[15px] bg-white p-[10px] text-center max-lg:h-[123px] max-lg:w-[84px] max-lg:p-[6px]">
+                  <Image src={ch.image} alt="" width={115} height={76} className="h-[76px] w-[115px] rounded-[15px] object-cover max-lg:h-[48px] max-lg:w-[72px] max-lg:rounded-[10px]" />
+                  <p className="mt-[6px] text-[10px] leading-[16px] font-bold text-ink-700 max-lg:text-[7px] max-lg:leading-[10px]">
                     <span className="text-purple-cta">{ch.kicker}</span>
                     <br />
                     {ch.topic}
                   </p>
-                  <Image src={funnel.logo} alt="" width={60} height={19} className="mt-auto h-[19px] w-[60px] max-md:h-[14px] max-md:w-[44px]" />
+                  <Image src={funnel.logo} alt="" width={60} height={19} className="mt-auto h-[19px] w-[60px] max-lg:h-[14px] max-lg:w-[44px]" />
                 </div>
               ))}
             </div>
-            <div className="min-w-0 flex-1 max-md:basis-[150px]">
-              <strong className="block text-[24px] leading-[32px] font-bold text-white max-md:text-[16px] max-md:leading-[24px] md:max-w-[447px]">
+            <div className="min-w-0 flex-1 max-lg:min-w-[130px] max-lg:basis-[130px]">
+              <strong className="block text-[24px] leading-[32px] font-bold text-white max-lg:text-[16px] max-lg:leading-[24px] lg:max-w-[447px]">
                 {funnel.title}
               </strong>
-              <p className="mt-1 text-[17px] leading-[27.2px] text-[#dd91ff] max-md:text-[13px] max-md:leading-[20px]">{funnel.tagline}</p>
+              <p className="mt-1 text-[17px] leading-[27.2px] text-[#dd91ff] max-lg:text-[13px] max-lg:leading-[20px]">{funnel.tagline}</p>
             </div>
             <button
+              ref={downloadRef}
               type="button"
               onClick={() => setModal(true)}
-              className="h-12 shrink-0 rounded-[50px] bg-[#7f1aa6] px-6 text-base text-white transition-colors hover:bg-purple-cta max-md:h-[34px] max-md:px-4"
+              className="h-12 shrink-0 rounded-[50px] bg-[#7f1aa6] px-6 text-base text-white transition-colors hover:bg-purple-cta max-lg:h-[34px] max-lg:px-4"
             >
               {funnel.cta}
             </button>
-            <button type="button" aria-label="Close" onClick={dismissedStore.dismiss} className="ml-auto size-6 shrink-0 text-white max-md:absolute max-md:top-3 max-md:right-3">
+            <button type="button" aria-label="Close" onClick={dismissedStore.dismiss} className="ml-auto size-6 shrink-0 text-white max-lg:absolute max-lg:top-3 max-lg:right-3">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -199,7 +202,7 @@ export function FunnelRibbon() {
           </div>
         </div>
       )}
-      {modal && <DownloadModal onClose={() => setModal(false)} />}
+      {modal && <DownloadModal onClose={() => setModal(false)} returnTo={() => downloadRef.current} />}
     </>
   );
 }

@@ -18,7 +18,7 @@ function Arrow({ dir, onClick }: { dir: "prev" | "next"; onClick: () => void }) 
       type="button"
       aria-label={dir === "prev" ? "Previous slide" : "Next slide"}
       onClick={onClick}
-      className={`absolute top-[379px] z-10 flex h-12 w-8 items-center justify-center rounded-[3px] border-2 border-transparent bg-black/80 text-white opacity-0 transition-opacity group-hover:opacity-75 hover:opacity-100 focus-visible:opacity-100 max-md:top-[308px] ${
+      className={`absolute top-[379px] z-10 flex h-12 w-8 items-center justify-center rounded-[3px] border-2 border-transparent bg-black/80 text-white opacity-0 transition-opacity group-hover:opacity-75 [@media(hover:none)]:opacity-75 hover:opacity-100 focus-visible:opacity-100 max-md:top-[308px] ${
         dir === "prev" ? "left-0" : "right-0"
       }`}
     >
