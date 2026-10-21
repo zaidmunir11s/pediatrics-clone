@@ -46,3 +46,18 @@ test.describe("mobile", () => {
     expect(new Set(xs).size).toBe(1);
   });
 });
+
+test("play button matches the reference pill, triangle and hover", async ({ page }) => {
+  await page.goto("/");
+  const play = page.getByRole("button", { name: "Play video" }).getByTestId("play-pill");
+  await play.scrollIntoViewIfNeeded();
+  expect((await play.boundingBox())!.width).toBe(96);
+  expect(await play.evaluate((e) => getComputedStyle(e).boxShadow)).toContain("rgba(0, 0, 0, 0.35) 0px 4px 12px 0px");
+  const tri = await play.evaluate((e) => {
+    const b = getComputedStyle(e, "::before");
+    return [b.borderLeftWidth, b.borderTopWidth, b.borderBottomWidth, b.borderLeftColor, b.marginLeft];
+  });
+  expect(tri).toEqual(["22px", "12px", "12px", "rgb(255, 255, 255)", "3px"]);
+  await play.hover();
+  await expect(play).toHaveCSS("background-color", "rgb(198, 40, 40)");
+});
