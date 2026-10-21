@@ -1,5 +1,6 @@
 import { AnnouncementBar } from "@/components/sections/AnnouncementBar";
 import { Header } from "@/components/sections/Header";
+import { Hero } from "@/components/sections/Hero";
 import { GetStartedModal } from "@/components/interactive/GetStartedModal";
 
 export default function Home() {
@@ -8,7 +9,9 @@ export default function Home() {
     <div className="pt-[50px]">
       <AnnouncementBar />
       <Header />
-      <main />
+      <main>
+        <Hero />
+      </main>
       <GetStartedModal />
     </div>
   );

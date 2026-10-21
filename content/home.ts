@@ -73,3 +73,25 @@ export const getStartedQuiz = {
   ],
   cta: "Get Started",
 };
+
+export const hero = {
+  titleLines: ["Pass Your", "Pediatric Boards With Confidence"],
+  copy: "Thousands of pediatricians (even those who’ve failed multiple times) have passed their board exams with our proven Pediatrics Board Review® system. Whether it’s your first time or your tenth, our resources and strategies help you pass with confidence. Join them and take the next step toward exam success!",
+  stats: [
+    { label: "Board certification in a", value: "SINGLE ATTEMPT" },
+    { label: "Tried and tested courses used by", count: 10000, suffix: "+", caption: "Pediatricians" },
+    { label: "First-time pass rates estimated at", count: 99, suffix: "%" },
+  ],
+  cta: { label: "Get Started", href: "#who-do-we-help" },
+  guarantee: {
+    badge: { src: img("Guarantee-Badge.webp"), alt: "Guarantee Badge" },
+    line1: "FIRST-TIME PASS GUARANTEE,",
+    line2Lead: "OR ",
+    line2Accent: "YOUR MONEY BACK!",
+  },
+  image: {
+    desktop: img("meet-your-coach-ashish-goyal.webp"),
+    mobile: img("Ashish-mobile-Banner.webp"),
+    alt: "Dr. Ashish Goyal introduces himself as your board exam coach, offering guidance and support through the Pediatrics Board Review system.",
+  },
+};

@@ -49,11 +49,15 @@ export function Button({
 }: Props) {
   return (
     <a
-      className={`inline-flex items-center justify-center gap-[0.7em] leading-[1.6] transition-colors duration-300 ease-in-out ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 leading-[1.6] transition-colors duration-300 ease-in-out ${variants[variant]} ${className}`}
       {...rest}
     >
       <span>{children}</span>
-      {chevron && <Chevron />}
+      {chevron && (
+        <span className="flex w-[18px] justify-center">
+          <Chevron />
+        </span>
+      )}
     </a>
   );
 }
