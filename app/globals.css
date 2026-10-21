@@ -1,26 +1,62 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design tokens measured from the reference (docs/reference-spec.md §2). */
+@theme {
+  --font-sans: var(--font-poppins), sans-serif;
+
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1025px;
+
+  --color-purple-cta: #b140ec;
+  --color-purple-deep: #6d28d9;
+  --color-purple-accent: #a855f7;
+  --color-violet-dark: #4c1d95;
+  --color-lavender: #e9d3f5;
+  --color-lavender-soft: #f3eeff;
+  --color-sky: #ddf6fc;
+  --color-navy: #100b47;
+  --color-navy-ribbon: #1c1763;
+  --color-amber: #f59e0b;
+  --color-cream-pill: #fff6e0;
+  --color-cream-border: #f2a900;
+  --color-cream-feature: #fdfae6;
+  --color-chip-yellow: #faf2c0;
+  --color-cyan-tag: #63daed;
+  --color-teal-text: #008195;
+  --color-teal-name: #3a8296;
+  --color-gray-bg: #fafafa;
+  --color-ink-900: #1e1b2e;
+  --color-ink-800: #2a2540;
+  --color-ink-700: #252525;
+  --color-ink-600: #393939;
+  --color-ink-500: #575050;
+  --color-card-border: #ece9f5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Kadence content width: 1290px wrapper, 20px inline padding → 1250–1270 content. */
+@utility container-pbr {
+  width: 100%;
+  max-width: 1310px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
