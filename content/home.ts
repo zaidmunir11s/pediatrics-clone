@@ -95,3 +95,59 @@ export const hero = {
     alt: "Dr. Ashish Goyal introduces himself as your board exam coach, offering guidance and support through the Pediatrics Board Review system.",
   },
 };
+
+export const preorder = {
+  kicker: "2027 Edition Preorders",
+  title: "Preorder for Only $1 Now & ",
+  titleAccent: "Save Up to 75%",
+  pillLead: "Get online access instantly for only ",
+  pillAccent: "$1",
+  releaseLabel: "Estimated Release Date: ",
+  releaseDate: "December 15, 2026",
+  cta: "Preorder for $1 ›",
+  cards: [
+    {
+      title: "Initial Certification",
+      image: { src: img("aap-no-brainer-1.webp"), alt: "PBR No Brainer Bundle", width: 700, height: 277 },
+      href: site("/preorder-now/"),
+      guarantee: "100% Money-Back First Time Pass Guarantee",
+    },
+    {
+      title: "MOCA-Peds",
+      image: { src: img("aap-moca-bundle-1.webp"), alt: "MOCA-PBR Bundle", width: 700, height: 560 },
+      href: site("/moca-peds-study-guide"),
+      guarantee: "100% Money-Back Quarterly Pass Guarantee",
+    },
+  ],
+};
+
+export const trustedStrip = {
+  lead: "Trusted by top doctors who have practiced at renowned institutions:",
+  institutions: [
+    "Johns Hopkins Medicine",
+    "Cleveland Clinic",
+    "Mayo Clinic",
+    "Massachusetts General Hospital",
+    "University of Michigan Medicine",
+  ],
+};
+
+export const startHere = [
+  { title: "First-time or repeat board taker?", body: "Initial Certification Exam", href: site("/pediatric-initial-certification/") },
+  { title: "Need to recertify quickly?", body: "MOC & MOCA-Peds", href: site("/moca-peds-study-guide/") },
+  { title: "Institutional partnerships", body: "Help your residents pass with confidence at scale", href: site("/residency-discounts/") },
+];
+
+export const strategy = {
+  paragraphs: [
+    "You’re not alone. Even brilliant doctors fail when they rely on the wrong approach.",
+    "Board review isn’t just about cramming more content. It’s about how you study. It’s about the strategy you use, the structure you follow, and the support you get.",
+    "We help you master all three, so you don’t just study harder. You study smarter.",
+  ],
+  closing: "Join thousands of pediatricians who’ve found a smarter way to pass.",
+  cta: { label: "Get Started", href: "#who-do-we-help" },
+  image: {
+    src: img("Thinking-Doctor.webp"),
+    alt: "A thoughtful physician contemplates common misconceptions about medical board exam prep — underestimating the importance of strategy and over-relying on study materials.",
+  },
+};
