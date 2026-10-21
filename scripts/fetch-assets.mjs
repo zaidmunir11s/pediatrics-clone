@@ -41,6 +41,8 @@ const uploads = [
   "Pros-and-Cons-of-Pediatric-Board-Review-Course-1.webp",
   "Great-Mnemonics-Can-Make-Passing-Much-Easier.webp",
   "pbr.webp",
+  "Footer-bg.png",
+  "pbr-dermatology-gastroenterology-study-guides.webp",
   "Pediatrics-Board-Review-Logo-White-1-scaled-e1764928355422.webp",
   "face.png",
   "twt.png",

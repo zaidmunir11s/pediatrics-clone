@@ -20,7 +20,7 @@ test("desktop nav lists reference links", async ({ page }) => {
     await expect(nav.getByRole("link", { name, exact: true })).toBeVisible();
   }
   await expect(page.getByRole("link", { name: "LOG IN" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "GET STARTED" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "GET STARTED", exact: true })).toBeVisible();
 });
 
 test("courses dropdown opens on hover", async ({ page }) => {
@@ -51,7 +51,7 @@ test("courses dropdown works by keyboard", async ({ page }) => {
 
 test("get started opens the welcome quiz modal", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "GET STARTED" }).click();
+  await page.getByRole("button", { name: "GET STARTED", exact: true }).click();
   const dialog = page.getByRole("dialog", { name: "Welcome to PBR!" });
   await expect(dialog).toBeVisible();
   await dialog.getByRole("radio", { name: /MOCA-Peds/ }).check();

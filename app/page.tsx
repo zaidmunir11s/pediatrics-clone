@@ -12,6 +12,10 @@ import { Reviews } from "@/components/sections/Reviews";
 import { WhyLove } from "@/components/sections/WhyLove";
 import { QuizCta } from "@/components/sections/QuizCta";
 import { Founder } from "@/components/sections/Founder";
+import { Articles } from "@/components/sections/Articles";
+import { Footer } from "@/components/sections/Footer";
+import { FunnelRibbon } from "@/components/interactive/FunnelRibbon";
+import { ScrollToTop } from "@/components/interactive/ScrollToTop";
 import { GetStartedModal } from "@/components/interactive/GetStartedModal";
 
 export default function Home() {
@@ -33,7 +37,11 @@ export default function Home() {
         <WhyLove />
         <QuizCta />
         <Founder />
+        <Articles />
       </main>
+      <Footer />
+      <FunnelRibbon />
+      <ScrollToTop />
       <GetStartedModal />
     </div>
   );

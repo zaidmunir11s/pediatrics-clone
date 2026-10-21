@@ -3,6 +3,8 @@
 
 export const SITE = "https://www.pediatricsboardreview.com";
 const site = (path: string) => `${SITE}${path}`;
+// Some footer links on the reference use the bare (non-www) domain; kept as-is.
+const bare = (path: string) => `https://pediatricsboardreview.com${path}`;
 const img = (file: string) => `/images/${file}`;
 
 export const logo = {
@@ -381,5 +383,152 @@ export const founder = {
   image: {
     src: img("ashish-goyal-pbr-founder.webp"),
     alt: "Pediatrics Board Review founder Dr. Ashish Goyal, a trusted coach for thousands of physicians preparing for board exams.",
+  },
+};
+
+export const articles = {
+  titleLead: "Popular ",
+  titleAccent: "Articles",
+  featured: {
+    title: "PEDIATRIC BOARD EXAM RESULTS FOR 2025 AND INSIGHTS FOR 2026",
+    href: site("/pediatric-board-exam-results-2024"),
+    excerpt: "Well, friends, the American Board of Pediatrics exam results for 2025 have been announced! It’s always an emotional time for us here at PBR HQ. It’s also overwhelming because we get flooded with emails from the members who have worked so hard over the past year, and have now FINALLY passed the boards! The stories from our 2025 members have been wonderful. To have members say that we have changed their lives has been nothing less than humbling.",
+    category: { label: "Passing The Boards", href: site("/category/passing-the-boards/") },
+    author: { name: "Dr. Ashish Goyal", avatar: img("avatars/ashish-goyal.jpg"), date: "December 2, 2025", iso: "2025-12-02" },
+    tag: "Featured Article",
+    video: {
+      thumb: img("Pediatric-Board-Exam-Results-for-2024-thumbnail.webp"),
+      embed: "https://www.youtube.com/embed/xXJjQodcM9c?autoplay=1&rel=0&modestbranding=1",
+    },
+  },
+  items: [
+    {
+      title: "So You Failed The Pediatric Boards? Use A Recovery Plan That Works!",
+      href: site("/failed-pediatric-boards"),
+      excerpt: "Since I failed the first time too, and then I increased my score by 40%, I know how to help you pass. Follow this step-by-step guide with an easy-to-follow structure, study schedule, and recommendations on test-taking strategy to pass.",
+      image: { src: img("pediatrics-board-review-failed.webp"), alt: "pediatrics board review failed" },
+    },
+    {
+      title: "Why AAP PREP Questions Are NOT The Best Study Questions For the Pediatric Board Exam",
+      href: site("/why-prep-questions-are-not-the-best-study-questions"),
+      excerpt: "Pediatricians often treat AAP prep questions as a study resource. This is a very common mistake. Read this article to understand the difference between how you should, and how you should not, use the AAP’s prep questions to help you pass the pediatric boards!",
+      image: { src: img("Are-AAP-Prep-Questions-Good-to-Study.webp"), alt: "Are AAP Prep Questions Good to Study" },
+    },
+    {
+      title: "How Many AAP Prep Questions Should I Do to Pass the Pediatric Boards?",
+      href: site("/how-many-aap-prep-questions-should-i-do"),
+      excerpt: "When using the AAP PREP questions for PRACTICING board-style questions, is there a minimum number of questions I should do? Is there a better way to use PREP questions to prepare? Should I use them to study? Get all your questions answered in this article!",
+      image: { src: img("How-Many-AAP-Prep-Questions-for-Board-Review-1.webp"), alt: "How Many AAP Prep Questions for Board Review 1" },
+    },
+    {
+      title: "Test-Taking Strategies for Medical Board Exams",
+      href: site("/test-taking-strategies-medical-board-exams"),
+      excerpt: "It’s possible that you are not a great test-taker. Focusing only on the topics is not enough. You need to develop strong test-taking strategies to help you break-down, process, and answer questions quickly! Learn 3 strategies that you can incorporate instantly to help you pass any medical board exam.",
+      image: { src: img("Use-Test-Taking-Strategy-to-Help-You-Pass.webp"), alt: "Puzzle pieces with the word strategy centered in blue highlighting planning teamwork and success Keywords like brand optimize and vision surround the central concept" },
+    },
+    {
+      title: "Compare 2026 Pediatric Board Review Courses",
+      href: site("/pediatric-board-review-course-2026"),
+      excerpt: "Not sure which pediatric study course you should take? Read this article for our tips on what to look for in a review course, what works, what doesn’t work, and which pediatric board review courses might fit your schedule.",
+      image: { src: img("Pros-and-Cons-of-Pediatric-Board-Review-Course-1.webp"), alt: "Pros and Cons of Pediatric Board Review Course 1" },
+    },
+    {
+      title: "Creating Memorable Pediatric Mnemonics",
+      href: site("/pediatric-mnemonics"),
+      excerpt: "It’s impossible to remember 2500 pediatric topics through rote memorization. Learning how to create simple (but effective) mnemonics can make or break your score on the pediatric boards. Read this article on creating high quality mnemonics and get access to FREE mnemonics from the PBR Core Study Guide.",
+      image: { src: img("Great-Mnemonics-Can-Make-Passing-Much-Easier.webp"), alt: "Great Mnemonics Can Make Passing Much Easier" },
+    },
+  ],
+};
+
+export const footer = {
+  cta: {
+    title: "Get Started",
+    body: "Take the first step toward passing your boards - with clarity, confidence, and a proven system.",
+    label: "Get Started",
+  },
+  columns: [
+    {
+      title: "Quick Links",
+      links: [
+        { label: "Residency", href: bare("/residency-discounts") },
+        { label: "Initial Certification", href: bare("/pediatric-initial-certification") },
+        { label: "MOC & MOCA-Peds", href: bare("/maintenance-of-certification") },
+        { label: "CME/MOC", href: bare("/cme") },
+        { label: "Login", href: "https://courses.pediatricsboardreview.com/pages/home" },
+      ],
+    },
+    {
+      title: "Products",
+      links: [
+        { label: "All Access Pass", href: bare("/all-access-pass") },
+        { label: "Test-Taking Strategies", href: bare("/full-test-taking-strategies-course") },
+        { label: "MOC & MOCA-Peds", href: bare("/moca-peds-study-guide") },
+        { label: "CME & MOC Credits", href: bare("/cme") },
+        { label: "All Products", href: bare("/products") },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { label: "Blog", href: bare("/blog-articles") },
+        { label: "Testimonials", href: bare("/testimonials") },
+        { label: "Community Forum", href: bare("/pediatrics-board-review-facebook-group") },
+        { label: "Tools to Help You Pass", href: bare("/tools") },
+        { label: "100% Pass Guarantee", href: bare("/guarantee") },
+        { label: "Refund Policy", href: site("/refund-policies") },
+      ],
+    },
+    {
+      title: "Article",
+      links: [
+        { label: "Failed Pediatric Boards", href: site("/category/failed-pediatric-boards") },
+        { label: "Passing The Boards", href: site("/category/passing-the-boards") },
+        { label: "American Board of Pediatrics", href: site("/category/american-board-of-pediatrics") },
+        { label: "Pediatric Mnemonics", href: site("/category/mnemonics-and-memory-aids") },
+        { label: "Roadmap To Success", href: site("/category/a-roadmap-to-success") },
+        { label: "Study Schedule & Tips", href: site("/category/study-schedule-tips") },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { label: "About", href: site("/about") },
+        { label: "Contact", href: site("/contact") },
+        { label: "FAQ", href: site("/frequently-asked-questions-abp") },
+        { label: "Terms and Conditions", href: site("/terms-use") },
+        { label: "Privacy", href: site("/privacy_policy") },
+      ],
+    },
+  ],
+  logo: { src: img("Pediatrics-Board-Review-Logo-White-1-scaled-e1764928355422.webp"), width: 1710, height: 532 },
+  socials: [
+    { label: "Facebook", href: "https://www.facebook.com/pediatricsboardreview", icon: img("face.png") },
+    { label: "X (Twitter)", href: "https://x.com/PedsBoardReview", icon: img("twt.png") },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/pediatrics-board-review", icon: img("in.png") },
+  ],
+  legal: [
+    { label: "*Terms & Conditions Apply", href: site("/terms-use") },
+    { label: "Privacy Policy", href: site("/privacy-policy") },
+  ],
+  copyright: "© 2026 Pediatrics Board Review. All rights reserved.",
+  arch: img("Footer-bg.png"),
+};
+
+export const funnel = {
+  chapters: [
+    { kicker: "FREE CHAPTER PDF", topic: "GASTROENTEROLOGY", image: img("free-chapter-1.webp") },
+    { kicker: "FREE CHAPTER PDF", topic: "DERMATOLOGY", image: img("free-chapter-2.webp") },
+  ],
+  logo: img("pbr-logo.webp"),
+  title: "Claim Your Two FREE PDF Chapters & MP3 Audio Study Guides Now",
+  tagline: "EASY TO READ…EASY TO READ…EASY TO READ…",
+  cta: "Download Now",
+  modal: {
+    title: "After Failing 5, 6 and Even TEN Times With Other Study Guides, Pediatricians Come to Us… and PASS.",
+    subtitle: "Let Us Show You “The Easy Way”",
+    guarantee: ["100% Money Back", "First-Time Pass Guarantee"],
+    image: img("pbr-dermatology-gastroenterology-study-guides.webp"),
+    footer: "Download Your Two Free Chapters",
   },
 };
