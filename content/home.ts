@@ -314,3 +314,72 @@ export const trustReviews = {
     },
   ],
 };
+
+export const reviews = {
+  title: "Reviews",
+  startIndex: 2,
+  slides: [
+    {
+      title: "I was able to pass comfortably!",
+      quote: "The book provides the perfect balance of depth and succinctness that helped me be successful… I was able to pass comfortably with a score higher than the national mean which was exciting as I have typically scored just at or below the mean on my Step exams.”",
+      name: "Dr. Nicole Mathis",
+      photo: { src: img("dr-nicole-mathis-testimonial.webp"), alt: "Dr. Nicole Mathis wearing a white coat and earrings, smiling confidently." },
+    },
+    {
+      title: "I couldn’t have gotten my score without it!",
+      quote: "This resource definitely helped solidify core knowledge needed for the exam and I couldn’t have gotten my score without it… I really do appreciate the support PBR has provided! Thanks again",
+      name: "Dr. Varsha Raghavan",
+      photo: { src: img("testimonial-varsha-raghavan.webp"), alt: "Dr. Varsha Raghavan smiling confidently, wearing a dark blazer over a white top." },
+    },
+    {
+      title: "PBR literally saved my butt!",
+      quote: "PBR literally saved my butt. I was never good at standardized exams and was an ‘at risk’ resident… The details were just right for passing the boards and the organization of the material made it easy for memorization.",
+      name: "Dr. Katherine Wu",
+      photo: { src: img("dr-katherine-wu-pbr-success-testimonial.webp"), alt: "Headshot of Dr. Katherine Wu, a smiling physician and successful Pediatrics Board Review student." },
+    },
+    {
+      title: "Loved it!",
+      quote: "I took PBR and passed easily. I found it online myself and then I started using it, and I loved it. I went through it multiple times… and that’s all I needed. There is a lot of mnemonics all throughout it that I still remember to this day.",
+      name: "Dr. Jessie Maxwell",
+      photo: { src: img("dr-jessie-maxwell-testimonial.webp"), alt: "Smiling Dr. Jessie Maxwell at a conference, wearing a green top and a blue lanyard." },
+    },
+  ],
+  occupation: "Board Certified Pediatrician",
+};
+
+export const whyLove = {
+  titleLead: "Why Students ",
+  titleAccent: "Love Us:",
+  cards: [
+    { title: ["Concise Content"], body: "We cut the fluff and focus only on the most tested topics, saving you hours of study time.", icon: img("Concise-Content-icon-1.webp"), alt: "Concise Content icon 1" },
+    { title: ["Complex Topics,", "Made Simple"], body: "No overwhelming basic science. Just clear, easy-to-understand explanations that stick.", icon: img("Made-Simple-icon-1.webp"), alt: "Made Simple icon 1" },
+    { title: ["Proven", "Effectiveness"], body: "PBR members score well above the national mean, with an estimated 99% first-time pass rate based on over 10 years of data.", icon: img("Effectiveness-icon-1.webp"), alt: "Effectiveness icon 1" },
+    { title: ["100% Pass", "Guarantee"], body: "If you don’t pass on your first try, you get your money back. That’s how confident we are. Visit our guarantee page for full details.", icon: img("Guarantee-icon-1.webp"), alt: "Guarantee icon 1" },
+    { title: ["Multimodal", "Learning"], body: "Learn your way with videos, audio, print, and digital resources working together for seamless studying.", icon: img("Learning-icon-1.webp"), alt: "Learning icon 1" },
+    { title: ["Built for", "Mastery"], body: "Repetition is built in. Our content is designed to help you review and retain what matters most.", icon: img("Mastery-icon-1.webp"), alt: "Mastery icon 1" },
+  ],
+};
+
+export const quiz = {
+  accent: "Not sure",
+  rest: " where",
+  line2: "to start?",
+  sub: "Take our quiz and get started",
+  cta: { label: "Get Started", href: "#who-do-we-help" },
+  image: {
+    src: img("female-pediatrician-pointing-and-guiding-1.webp"),
+    alt: "Female pediatrician who is wearing a stethoscope, smiling, and pointing to ther right. text that offers a first step to preparing for the pediatric board exam.",
+  },
+};
+
+export const founder = {
+  kicker: "We help pediatricians pass the boards, even if they’ve been struggling for years.",
+  titleLead: "Meet our founder,",
+  name: "ASHISH GOYAL",
+  body: "After failing his pediatric boards, Dr. Ashish Goyal completely restructured his studying technique to embrace a new style of learning that was focused on efficiency and repetition. As a result, he increased his score by 40%, and was invited by the ABP to write board questions for them. That led Ashish to begin a journey that has helped thousands of pediatricians pass their board exams through Pediatrics Board Review®.",
+  cta: { label: "Get Started", href: "#who-do-we-help" },
+  image: {
+    src: img("ashish-goyal-pbr-founder.webp"),
+    alt: "Pediatrics Board Review founder Dr. Ashish Goyal, a trusted coach for thousands of physicians preparing for board exams.",
+  },
+};

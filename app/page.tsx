@@ -8,6 +8,10 @@ import { Strategy } from "@/components/sections/Strategy";
 import { TrustReviews } from "@/components/sections/TrustReviews";
 import { AsSeenOn } from "@/components/sections/AsSeenOn";
 import { WhoHelp } from "@/components/sections/WhoHelp";
+import { Reviews } from "@/components/sections/Reviews";
+import { WhyLove } from "@/components/sections/WhyLove";
+import { QuizCta } from "@/components/sections/QuizCta";
+import { Founder } from "@/components/sections/Founder";
 import { GetStartedModal } from "@/components/interactive/GetStartedModal";
 
 export default function Home() {
@@ -25,6 +29,10 @@ export default function Home() {
         <TrustReviews />
         <AsSeenOn />
         <WhoHelp />
+        <Reviews />
+        <WhyLove />
+        <QuizCta />
+        <Founder />
       </main>
       <GetStartedModal />
     </div>
